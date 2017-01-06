@@ -1635,10 +1635,11 @@ var appdfEditor = (function() {
         
         //privacy policy validation
         var $privacyPolicyArr = $("input[id^=\"description-texts-privacypolicy-link\"]");
+        var $privacyPolicyTextArr = $("textarea[id^=\"description-texts-privacypolicy-data\"]"); 
         totalErrorCheckCount += $privacyPolicyArr.size();
-        $privacyPolicyArr.each(function() {
-            var linkValue = $(this).val();
-            var fullTextValue = $(this).next().next().val();
+        $privacyPolicyArr.each(function(index) {
+            var linkValue = $($privacyPolicyArr[index]).val();
+            var fullTextValue = $($privacyPolicyTextArr[index]).val();
             if ((linkValue !== "" && fullTextValue === "") || (linkValue === "" && fullTextValue !== "")) {
                 checkErrorMessage({
                     valid: false,
@@ -1652,10 +1653,11 @@ var appdfEditor = (function() {
         
         //eula validation
         var $eulaArr = $("input[id^=\"description-texts-eula-link\"]");
+        var $eulaTextArr = $("textarea[id^=\"description-texts-eula-data\"]");
         totalErrorCheckCount += $eulaArr.size();
-        $eulaArr.each(function() {
-            var linkValue = $(this).val();
-            var fullTextValue = $(this).next().next().val();
+        $eulaArr.each(function(index) {
+            var linkValue = $($eulaArr[index]).val();
+            var fullTextValue = $($eulaTextArr[index]).val();
             if ((linkValue !== "" && fullTextValue === "") || (linkValue === "" && fullTextValue !== "")) {
                 checkErrorMessage({
                     valid: false,
